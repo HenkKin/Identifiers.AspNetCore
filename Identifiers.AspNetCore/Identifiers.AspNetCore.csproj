@@ -5,6 +5,10 @@
     <Authors>Henk Kin</Authors>
     <Description>AspNetCore integration for Identifiers with DependencyInjection integration</Description>
     <Copyright>Henk Kin</Copyright>
+    <PackageProjectUrl>https://github.com/HenkKin/Identifiers.AspNetCore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HenkKin/Identifiers.AspNetCore.git</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Identifiers id int guid AspNetCore integration Identifiers DI DependencyInjection AspNet Core</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
