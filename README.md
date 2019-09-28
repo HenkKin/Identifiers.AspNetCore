@@ -49,5 +49,32 @@ public class Startup
     ...
 ```
 
+### Using NSwag
+
+If you're using [NSwag](https://github.com/RicoSuter/NSwag/) and you want to use this `Identifier type` in your models. Then you have to choose how to expose your Identifiers. Below an example if you want to expose your `Identifier` type as `string`:
+
+```csharp
+...
+using Identifiers;
+
+public class Startup
+{
+    ...
+    
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        ...
+        services.AddSwaggerDocument(settings =>
+        {
+            settings.Title = "Your Service";
+            ...
+            settings.TypeMappers.Add(new PrimitiveTypeMapper(typeof(Identifier), s => s.Type = JsonObjectType.String));
+        });
+        ...
+    }
+    
+    ...
+```
 
 
