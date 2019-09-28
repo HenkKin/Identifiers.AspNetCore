@@ -20,28 +20,34 @@ Or via the .NET Core command line interface:
 
     dotnet add package Identifiers.AspNetCore
 
-Either commands, from Package Manager Console or .NET Core CLI, will download and install Identifiers.AspNetCoreand all required dependencies:
+Either commands, from Package Manager Console or .NET Core CLI, will download and install Identifiers.AspNetCore and all required dependencies:
 - [Identifiers](https://www.nuget.org/packages/Identifiers/)
 - [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/)
 
 ### Usage
 
+If you're using ASP.NET Core and you want to use this Identifier type in your models, then you can use [Identifiers.AspNetCore](https://github.com/HenkKin/Identifiers.AspNetCore/) package which includes a `IServiceCollection.AddIdentifiers<[InternalClrType:short|int|long|Guid]>()` extension method, allowing you to register all needed RouteConstraints, ModelBinders and JsonConverters.
+
 To use it:
 
 ```csharp
-using Identifiers;
+...
+using Identifiers.AspNetCore;
 
-public class Order
+public class Startup
 {
-    public Identifier Id { get; set; }
+    ...
+    
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        ...
+        services.AddIdentifiers<short|int|long|Guid>();
+        ...
+    }
+    
     ...
 ```
 
-### ASP.NET Core
 
-If you're using ASP.NET Core and you want to use this Identifier type in your models, then you can use [Identifiers.AspNetCore](https://github.com/HenkKin/Identifiers.AspNetCore/) package which includes a `IServiceCollection.AddIdentifiers<[InternalClrType:short|int|long|Guid]>()` extension method, allowing you to register all needed RouteConstraints, ModelBinders and JsonConverters.
 
-### EntityFrameworkCore
-
-If you're using EntityFrameworkCore and you want to use this Identifier type in your entities, then you can use [Identifiers.EntityFrameworkCore](https://github.com/HenkKin/Identifiers.EntityFrameworkCore/) package which includes a `DbContextOptionsBuilder.UseIdentifiers<[InternalClrType:short|int|long|Guid]>()` extension method, allowing you to register all needed IValueConverterSelectors and IMigrationsAnnotationProviders. 
-It also includes a `PropertyBuilder<Identifier>.IdentifierValueGeneratedOnAdd()` extension method, allowing you to register all needed configuration to use SqlServerValueGenerationStrategy.IdentityColumn. 
