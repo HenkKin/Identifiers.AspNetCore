@@ -5,7 +5,7 @@ Identifiers.AspNetCore
 
 ### Summary
 
-The Identifiers.AspNetCore library is an extensions on [Identifiers](https://github.com/HenkKin/Identifiers/).
+The Identifiers.AspNetCore library is an extension on [Identifiers](https://github.com/HenkKin/Identifiers/).
 
 This library is Cross-platform, supporting `netstandard2.1`.
 
@@ -20,7 +20,10 @@ Or via the .NET Core command line interface:
 
     dotnet add package Identifiers.AspNetCore
 
-Either commands, from Package Manager Console or .NET Core CLI, will download and install Identifiers.AspNetCore and all required dependencies:
+Either commands, from Package Manager Console or .NET Core CLI, will download and install Identifiers.AspNetCore and all required dependencies.
+
+### Dependencies
+
 - [Identifiers](https://www.nuget.org/packages/Identifiers/)
 - [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/)
 
@@ -51,7 +54,7 @@ public class Startup
 
 ### Using NSwag
 
-If you're using [NSwag](https://github.com/RicoSuter/NSwag/) and you want to use this `Identifier type` in your models. Then you have to choose how to expose your Identifiers. Below an example if you want to expose your `Identifier` type as `string`:
+If you're using [NSwag](https://github.com/RicoSuter/NSwag/) and you want to use this `Identifier` type in your models. Then you have to choose how to expose your `Identifier` types. Below an example if you want to expose your `Identifier` type as `string`:
 
 ```csharp
 ...
