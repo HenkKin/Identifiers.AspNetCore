@@ -1,5 +1,4 @@
-﻿using System;
-using Identifiers.AspNetCore.JsonConverters;
+﻿using Identifiers.AspNetCore.JsonConverters;
 using Identifiers.AspNetCore.ModelBinders;
 using Identifiers.AspNetCore.RouteContraints;
 using Microsoft.AspNetCore.Mvc;
@@ -10,23 +9,24 @@ namespace Identifiers.AspNetCore
 {
     public static class IdentifierServiceCollectionExtensions
     {
-        public static IServiceCollection AddIdentifiers<TDatabaseClrType>(this IServiceCollection services) where TDatabaseClrType : IConvertible
+        public static IServiceCollection AddIdentifiers<TInternalClrType>(this IServiceCollection services)
         {
             services.Configure<MvcOptions>(options =>
             {
-                options.ModelBinderProviders.Insert(0, new IdentifierModelBinderProvider<TDatabaseClrType>());
+                options.ModelBinderProviders.Insert(0, new IdentifierModelBinderProvider<TInternalClrType>());
             });
 
 
             services.Configure<RouteOptions>(options =>
             {
-                options.ConstraintMap.Add("identifier", typeof(IdentifierRouteConstraint<TDatabaseClrType>));
+                options.ConstraintMap.Add("identifier", typeof(IdentifierRouteConstraint<TInternalClrType>));
             });
 
 
             services.Configure<MvcNewtonsoftJsonOptions>(options =>
             {
-                options.SerializerSettings.Converters.Add(new IdentifierJsonConverter<TDatabaseClrType>());
+                options.SerializerSettings.Converters.Add(new IdentifierJsonConverter<TInternalClrType>());
+                options.SerializerSettings.Converters.Add(new NullableIdentifierJsonConverter<TInternalClrType>());
             });
 
             return services;

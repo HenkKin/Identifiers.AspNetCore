@@ -3,11 +3,11 @@ using Newtonsoft.Json;
 
 namespace Identifiers.AspNetCore.JsonConverters
 {
-    internal class IdentifierJsonConverter<TInternalClrType> : JsonConverter<Identifier>
+    internal class NullableIdentifierJsonConverter<TInternalClrType> : JsonConverter<Identifier?>
     {
-        public override void WriteJson(JsonWriter writer, Identifier value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, Identifier? value, JsonSerializer serializer)
         {
-            var internalValue = value.GetValue();
+            var internalValue = value?.GetValue();
 
             if (internalValue == null)
             {
@@ -19,11 +19,10 @@ namespace Identifiers.AspNetCore.JsonConverters
             }
         }
 
-        public override Identifier ReadJson(JsonReader reader, Type objectType, Identifier existingValue,
-            bool hasExistingValue,
+        public override Identifier? ReadJson(JsonReader reader, Type objectType, Identifier? existingValue, bool hasExistingValue,
             JsonSerializer serializer)
         {
-            Identifier target;
+            Identifier? target;
 
             if (reader.Value != null)
             {
@@ -31,7 +30,7 @@ namespace Identifiers.AspNetCore.JsonConverters
             }
             else
             {
-                target = new Identifier();
+                target = null;
             }
 
             return target;

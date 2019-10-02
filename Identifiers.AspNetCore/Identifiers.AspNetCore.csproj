@@ -9,6 +9,8 @@
     <RepositoryUrl>https://github.com/HenkKin/Identifiers.AspNetCore.git</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Identifiers id int guid AspNetCore integration Identifiers DI DependencyInjection AspNet Core</PackageTags>
+    <Version>1.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

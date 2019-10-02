@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 
 namespace Identifiers.AspNetCore.ModelBinders
 {
-    public class IdentifierModelBinderProvider<TDatabaseClrType> : IModelBinderProvider where TDatabaseClrType : IConvertible
+    internal class IdentifierModelBinderProvider<TInternalClrType> : IModelBinderProvider
     {
         public IModelBinder GetBinder(ModelBinderProviderContext context)
         {
@@ -15,12 +15,12 @@ namespace Identifiers.AspNetCore.ModelBinders
 
             if (context.Metadata.ModelType == typeof(Identifier))
             {
-                return new BinderTypeModelBinder(typeof(IdentifierModelBinder<TDatabaseClrType>));
+                return new BinderTypeModelBinder(typeof(IdentifierModelBinder<TInternalClrType>));
             }
 
             if (context.Metadata.ModelType == typeof(Identifier?))
             {
-                return new BinderTypeModelBinder(typeof(IdentifierModelBinder<TDatabaseClrType>));
+                return new BinderTypeModelBinder(typeof(IdentifierModelBinder<TInternalClrType>));
             }
 
             return null;

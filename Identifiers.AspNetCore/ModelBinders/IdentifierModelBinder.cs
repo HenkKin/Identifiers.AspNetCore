@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Identifiers.TypeConverters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Identifiers.AspNetCore.ModelBinders
 {
-    public class IdentifierModelBinder<TDatabaseClrType> : IModelBinder where TDatabaseClrType : IConvertible
+    internal class IdentifierModelBinder<TInternalClrType> : IModelBinder
     {
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
@@ -24,7 +23,7 @@ namespace Identifiers.AspNetCore.ModelBinders
             {
                 return Task.CompletedTask;
             }
-            
+
             bindingContext.ModelState.SetModelValue(modelName,
                 valueProviderResult);
 
@@ -39,7 +38,8 @@ namespace Identifiers.AspNetCore.ModelBinders
                 }
                 else
                 {
-                    model = IdentifierTypeConverter.ToIdentifier<TDatabaseClrType>(value);
+                    //model = IdentifierTypeConverter.ToIdentifier<TInternalClrType>(value);
+                    model = new Identifier(Convert.ChangeType(value, typeof(TInternalClrType)));
                 }
                 //if model is null and type is not nullable
                 //return a required field error
@@ -58,7 +58,7 @@ namespace Identifiers.AspNetCore.ModelBinders
                 else
                 {
                     bindingContext.Result = ModelBindingResult.Success(model);
-                    return Task.CompletedTask; 
+                    return Task.CompletedTask;
                 }
             }
             catch (Exception exception)

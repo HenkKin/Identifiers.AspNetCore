@@ -5,37 +5,42 @@ using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace Identifiers.AspNetCore.RouteContraints
 {
-    public class IdentifierRouteConstraint<TDatabaseClrType> : IRouteConstraint
+    internal class IdentifierRouteConstraint<TInternalClrType> : IRouteConstraint
     {
         private readonly IRouteConstraint _routeConstraint;
 
         public IdentifierRouteConstraint()
         {
-            if (typeof(TDatabaseClrType) == typeof(short))
+            if (typeof(TInternalClrType) == typeof(short))
             {
                 _routeConstraint = new IntRouteConstraint();
             }
-            else if (typeof(TDatabaseClrType) == typeof(int))
+            else if (typeof(TInternalClrType) == typeof(int))
             {
                 _routeConstraint = new IntRouteConstraint();
             }
-            else if (typeof(TDatabaseClrType) == typeof(long))
+            else if (typeof(TInternalClrType) == typeof(long))
             {
                 _routeConstraint = new LongRouteConstraint();
             }
-            else if (typeof(TDatabaseClrType) == typeof(Guid))
+            else if (typeof(TInternalClrType) == typeof(Guid))
             {
                 _routeConstraint = new GuidRouteConstraint();
             }
             else
             {
-                _routeConstraint = new IntRouteConstraint();
+                _routeConstraint = null;
             }
         }
 
         public bool Match(HttpContext httpContext, IRouter route, string routeKey, RouteValueDictionary values, RouteDirection routeDirection)
         {
-            return _routeConstraint.Match(httpContext, route, routeKey, values, routeDirection);
+            if (_routeConstraint != null)
+            {
+                return _routeConstraint.Match(httpContext, route, routeKey, values, routeDirection);
+            }
+
+            return true;
         }
     }
 }
