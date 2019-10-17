@@ -1,6 +1,6 @@
-﻿using Identifiers.AspNetCore.JsonConverters;
-using Identifiers.AspNetCore.ModelBinders;
+﻿using Identifiers.AspNetCore.ModelBinders;
 using Identifiers.AspNetCore.RouteContraints;
+using Identifiers.Extensions.Newtonsoft.Json.JsonConverters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;

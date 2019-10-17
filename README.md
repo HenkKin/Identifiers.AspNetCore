@@ -27,6 +27,7 @@ Either commands, from Package Manager Console or .NET Core CLI, will download an
 ### Dependencies
 
 - [Identifiers](https://www.nuget.org/packages/Identifiers/)
+- [Identifiers.Extensions.Newtonsoft.Json](https://www.nuget.org/packages/Identifiers.Extensions.Newtonsoft.Json/)
 - [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/)
 
 ### Usage
