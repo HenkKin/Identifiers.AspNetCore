@@ -25,7 +25,8 @@ namespace Identifiers.AspNetCore
 
             services.Configure<MvcNewtonsoftJsonOptions>(options =>
             {
-                options.SerializerSettings.Converters.Add(new IdentifierJsonConverter<TInternalClrType>());
+                // This fixes IConvertible issues on Identifier 
+                // options.SerializerSettings.Converters.Add(new IdentifierJsonConverter<TInternalClrType>());
                 options.SerializerSettings.Converters.Add(new NullableIdentifierJsonConverter<TInternalClrType>());
             });
 
