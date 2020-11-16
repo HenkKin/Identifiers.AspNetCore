@@ -9,7 +9,7 @@ Identifiers.AspNetCore
 
 The Identifiers.AspNetCore library is an extension on [Identifiers](https://github.com/HenkKin/Identifiers/).
 
-This library is Cross-platform, supporting `netstandard2.1`.
+This library is supporting `net5.0`.
 
 ### Installing Identifiers.AspNetCore
 
