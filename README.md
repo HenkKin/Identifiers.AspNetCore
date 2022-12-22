@@ -3,7 +3,6 @@ Identifiers.AspNetCore
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/HenkKin/Identifiers.AspNetCore?branch=master&svg=true)](https://ci.appveyor.com/project/HenkKin/Identifiers-AspNetCore) 
 [![NuGet](https://img.shields.io/nuget/dt/Identifiers.AspNetCore.svg)](https://www.nuget.org/packages/Identifiers.AspNetCore) 
 [![NuGet](https://img.shields.io/nuget/vpre/Identifiers.AspNetCore.svg)](https://www.nuget.org/packages/Identifiers.AspNetCore)
-[![BCH compliance](https://bettercodehub.com/edge/badge/HenkKin/Identifiers.AspNetCore?branch=master)](https://bettercodehub.com/)
 
 ### Summary
 
